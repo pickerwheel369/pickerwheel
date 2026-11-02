@@ -1,0 +1,3446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pickerwheel.live - Free Random Picker Wheel & Decision Maker</title>
+    <meta name="description" content="Spin the wheel at Pickerwheel.live to make fair, random choices instantly. Free online random name picker, giveaway selector, classroom tool, and decision maker.">
+    <meta name="keywords" content="picker wheel, random wheel spinner, decision maker, name picker, giveaway picker, random choice generator, spin the wheel">
+    
+    <!-- Open Graph / Social Meta -->
+    <meta property="og:title" content="Pickerwheel.live - Free Random Picker Wheel & Decision Maker">
+    <meta property="og:description" content="Spin the wheel to make fair, unbiased choices instantly for giveaways, games, classroom activities, and decisions.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://pickerwheel.live">
+
+    <!-- Google Fonts for modern typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
+    <style>
+/* ==========================================================================
+   Pickerwheel.live - Main Stylesheet
+   Color Palette: Header & Footer #fe921b, Blue-Accented Buttons & Highlights
+   Clean, Responsive, SEO-Friendly
+   ========================================================================== */
+
+:root {
+    /* Main Background & Cards */
+    --bg-dark: #0b0f19;
+    --bg-card: rgba(20, 27, 45, 0.75);
+    --bg-card-hover: rgba(26, 36, 60, 0.85);
+    --border-color: rgba(255, 255, 255, 0.08);
+    --font-header: 'Outfit', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    --font-body: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+
+    /* Mandatory Header & Footer Brand Color: #fe921b */
+    --brand-orange: #fe921b;
+    --brand-orange-hover: #e58110;
+    --brand-orange-text: #0f172a; /* Deep charcoal for crisp contrast on orange */
+
+    /* Blue Accent System */
+    --blue-primary: #2563eb;
+    --blue-hover: #1d4ed8;
+    --blue-active: #1e40af;
+    --blue-light: #3b82f6;
+    --blue-glow: rgba(37, 99, 235, 0.35);
+    --blue-badge-bg: rgba(37, 99, 235, 0.15);
+    --blue-badge-border: rgba(59, 130, 246, 0.4);
+    --blue-badge-text: #93c5fd;
+
+    /* Theme Accent Colors */
+    --neon-primary: #06b6d4;
+    --neon-secondary: #ec4899;
+    --neon-glow: rgba(6, 182, 212, 0.4);
+    --accent-color: #3b82f6;
+    --text-main: #f8fafc;
+    --text-muted: #94a3b8;
+    --danger: #ef4444;
+    --danger-glow: rgba(239, 68, 68, 0.3);
+    --success: #10b981;
+}
+
+/* Reset and Base Styles */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: var(--font-body);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: var(--bg-dark);
+    color: var(--text-main);
+    min-height: 100vh;
+    overflow-x: hidden;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Background Atmosphere */
+.stars-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -2;
+    background-image: 
+        radial-gradient(1px 1px at 20px 30px, #fff, rgba(0,0,0,0)),
+        radial-gradient(1px 1px at 40px 70px, #fff, rgba(0,0,0,0)),
+        radial-gradient(2px 2px at 90px 40px, rgba(255,255,255,0.7), rgba(0,0,0,0)),
+        radial-gradient(1px 1px at 150px 120px, #fff, rgba(0,0,0,0)),
+        radial-gradient(2px 2px at 200px 80px, rgba(255,255,255,0.6), rgba(0,0,0,0));
+    background-size: 250px 250px;
+    opacity: 0.25;
+}
+
+.glowing-orb {
+    position: fixed;
+    border-radius: 50%;
+    filter: blur(140px);
+    z-index: -1;
+    opacity: 0.15;
+    pointer-events: none;
+    transition: background 1s ease;
+}
+
+.orb-1 {
+    top: -10%;
+    left: -10%;
+    width: 50vw;
+    height: 50vw;
+    background: radial-gradient(circle, var(--blue-primary) 0%, rgba(0,0,0,0) 70%);
+}
+
+.orb-2 {
+    bottom: -10%;
+    right: -10%;
+    width: 50vw;
+    height: 50vw;
+    background: radial-gradient(circle, #f97316 0%, rgba(0,0,0,0) 70%);
+}
+
+/* ==========================================================================
+   TOP HEADER (Color Code: #fe921b)
+   Logo: Pickerwheel.live (clean font, slightly bold)
+   Navigation: Home | Pickerwheel | Contact
+   ========================================================================== */
+.site-header {
+    background-color: var(--brand-orange);
+    color: var(--brand-orange-text);
+    width: 100%;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.18);
+    border-bottom: 2px solid rgba(0, 0, 0, 0.08);
+}
+
+.site-header-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0.85rem 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+}
+
+/* Logo: Pickerwheel.live */
+.site-logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.65rem;
+    text-decoration: none;
+    color: var(--brand-orange-text);
+    transition: transform 0.15s ease, opacity 0.15s ease;
+}
+
+.site-logo:hover {
+    transform: translateY(-1px);
+    opacity: 0.95;
+}
+
+.site-logo-icon {
+    font-size: 1.8rem;
+    display: inline-block;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.15));
+}
+
+.site-logo-text {
+    font-family: var(--font-header);
+    font-size: 1.4rem;
+    font-weight: 700; /* slightly bold clean font */
+    letter-spacing: -0.025em;
+    color: #0f172a;
+    display: inline-flex;
+    align-items: center;
+}
+
+.site-logo-text .live-badge {
+    font-size: 0.82rem;
+    font-weight: 700;
+    background: #0f172a;
+    color: #ffffff;
+    padding: 0.1rem 0.45rem;
+    border-radius: 6px;
+    margin-left: 0.25rem;
+    letter-spacing: 0.03em;
+}
+
+/* Navigation Links */
+.site-nav {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+}
+
+.site-nav .nav-link {
+    color: #0f172a;
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 600;
+    padding: 0.4rem 0.75rem;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.site-nav .nav-link:hover {
+    background-color: rgba(15, 23, 42, 0.12);
+    color: #000000;
+}
+
+.site-nav .nav-link.active {
+    background-color: #0f172a;
+    color: #ffffff;
+}
+
+.site-nav .nav-contact-btn {
+    background: #0f172a;
+    color: #ffffff !important;
+    font-weight: 600;
+    padding: 0.45rem 1rem;
+    border-radius: 9999px;
+    box-shadow: 0 2px 8px rgba(15, 23, 42, 0.25);
+}
+
+.site-nav .nav-contact-btn:hover {
+    background: #1e293b;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(15, 23, 42, 0.35);
+}
+
+/* Mobile Nav Toggle */
+.mobile-nav-toggle {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: #0f172a;
+    cursor: pointer;
+    padding: 0.4rem;
+}
+
+@media (max-width: 680px) {
+    .site-header-inner {
+        padding: 0.75rem 1rem;
+    }
+    
+    .site-nav {
+        gap: 0.5rem;
+    }
+
+    .site-nav .nav-link {
+        font-size: 0.88rem;
+        padding: 0.35rem 0.55rem;
+    }
+
+    .site-logo-text {
+        font-size: 1.2rem;
+    }
+}
+
+/* ==========================================================================
+   AD CONTAINER (728x90 LEADERBOARD)
+   Responsive, Clean, Ready for AdSense / Banner Code
+   ========================================================================== */
+.ad-banner-section {
+    width: 100%;
+    max-width: 1200px;
+    margin: 1.25rem auto;
+    padding: 0 1rem;
+    display: flex;
+    justify-content: center;
+}
+
+.ad-card-728x90 {
+    width: 100%;
+    max-width: 728px;
+    min-height: 90px;
+    background: rgba(15, 23, 42, 0.5);
+    border: 1px dashed rgba(255, 255, 255, 0.18);
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.2s ease, background 0.2s ease;
+}
+
+.ad-card-728x90:hover {
+    border-color: rgba(59, 130, 246, 0.4);
+    background: rgba(15, 23, 42, 0.7);
+}
+
+.ad-label-tag {
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    padding: 0.2rem 0.6rem;
+    background: rgba(255, 255, 255, 0.04);
+    border-radius: 4px;
+    margin-bottom: 0.35rem;
+}
+
+.ad-placeholder-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+    color: var(--text-muted);
+    font-size: 0.88rem;
+    text-align: center;
+    padding: 0.5rem 1rem;
+}
+
+.ad-placeholder-content i {
+    width: 20px;
+    height: 20px;
+    color: var(--blue-light);
+}
+
+/* ==========================================================================
+   HERO SECTION (Blue-accented buttons and highlights)
+   ========================================================================== */
+.hero-section {
+    max-width: 1100px;
+    margin: 0.5rem auto 1.5rem auto;
+    padding: 2rem 1.5rem 1rem 1.5rem;
+    text-align: center;
+}
+
+.hero-highlights-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.75rem;
+    margin-bottom: 1.25rem;
+}
+
+/* Blue-accented highlights */
+.hero-highlight-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    background: var(--blue-badge-bg);
+    border: 1px solid var(--blue-badge-border);
+    color: var(--blue-badge-text);
+    padding: 0.35rem 0.85rem;
+    border-radius: 9999px;
+    font-size: 0.82rem;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    box-shadow: 0 2px 10px rgba(37, 99, 235, 0.15);
+}
+
+.hero-highlight-pill i {
+    width: 14px;
+    height: 14px;
+    color: var(--blue-light);
+}
+
+.hero-title {
+    font-family: var(--font-header);
+    font-size: 2.6rem;
+    font-weight: 800;
+    line-height: 1.15;
+    letter-spacing: -0.03em;
+    margin-bottom: 0.85rem;
+    background: linear-gradient(135deg, #ffffff 40%, #93c5fd 80%, #3b82f6 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.hero-subtitle {
+    font-size: 1.05rem;
+    color: var(--text-muted);
+    max-width: 760px;
+    margin: 0 auto 1.75rem auto;
+    line-height: 1.6;
+}
+
+/* Blue-accented Buttons */
+.hero-buttons-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+.btn-blue-primary {
+    background: linear-gradient(135deg, var(--blue-primary) 0%, var(--blue-hover) 100%);
+    color: #ffffff !important;
+    text-decoration: none;
+    font-family: var(--font-header);
+    font-size: 1.05rem;
+    font-weight: 700;
+    padding: 0.85rem 1.85rem;
+    border-radius: 12px;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+    border: 1px solid rgba(147, 197, 253, 0.3);
+    box-shadow: 0 6px 20px var(--blue-glow);
+    cursor: pointer;
+    transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.btn-blue-primary:hover {
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 0 8px 26px rgba(37, 99, 235, 0.5);
+    background: linear-gradient(135deg, #3b82f6 0%, var(--blue-primary) 100%);
+}
+
+.btn-blue-primary:active {
+    transform: translateY(1px);
+}
+
+.btn-blue-secondary {
+    background: rgba(37, 99, 235, 0.12);
+    color: #93c5fd !important;
+    text-decoration: none;
+    font-family: var(--font-header);
+    font-size: 1.05rem;
+    font-weight: 600;
+    padding: 0.85rem 1.65rem;
+    border-radius: 12px;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+    border: 1px solid rgba(59, 130, 246, 0.35);
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn-blue-secondary:hover {
+    background: rgba(37, 99, 235, 0.22);
+    color: #ffffff !important;
+    border-color: rgba(59, 130, 246, 0.6);
+    transform: translateY(-1px);
+}
+
+@media (max-width: 768px) {
+    .hero-title {
+        font-size: 1.95rem;
+    }
+    .hero-subtitle {
+        font-size: 0.95rem;
+    }
+}
+
+/* ==========================================================================
+   APP WRAPPER & PICKER WHEEL LAYOUT
+   ========================================================================== */
+.app-wrapper {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 1rem 1.5rem 2rem 1.5rem;
+}
+
+.app-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+    align-items: start;
+}
+
+@media (min-width: 1024px) {
+    .app-container {
+        grid-template-columns: 1.2fr 0.8fr;
+    }
+}
+
+/* ==========================================================================
+   WHEEL SECTION (CANVAS & SPINNER)
+   ========================================================================== */
+.wheel-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.wheel-outer-container {
+    position: relative;
+    width: 100%;
+    max-width: 500px;
+    aspect-ratio: 1;
+    margin: 1.25rem 0;
+}
+
+/* Top Pointer Indicator */
+.wheel-pointer-container {
+    position: absolute;
+    top: -24px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+}
+
+.wheel-pointer {
+    width: 0;
+    height: 0;
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-top: 38px solid #ffffff;
+    filter: drop-shadow(0px 8px 12px rgba(0, 0, 0, 0.45)) 
+            drop-shadow(0 0 12px var(--blue-light));
+    transform-origin: center top;
+}
+
+.wheel-pointer.active-bounce {
+    animation: pointer-wiggle 0.25s ease infinite alternate;
+}
+
+/* Circular Wheel Wrapper */
+.wheel-inner-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    padding: 12px;
+    background: rgba(15, 23, 42, 0.6);
+    box-shadow: 
+        0 20px 50px rgba(0, 0, 0, 0.5),
+        inset 0 0 40px rgba(255, 255, 255, 0.05),
+        0 0 30px rgba(37, 99, 235, 0.25);
+    border: 1px solid var(--border-color);
+    transition: box-shadow 0.5s ease;
+}
+
+#wheel-canvas {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    display: block;
+    background: #0f172a;
+}
+
+/* Center SPIN Button Overlay */
+.center-spin-button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 86px;
+    height: 86px;
+    border-radius: 50%;
+    border: 4px solid #ffffff;
+    background: radial-gradient(circle at 30% 30%, #ffffff 0%, #cbd5e1 50%, #64748b 100%);
+    color: #0f172a;
+    font-family: var(--font-header);
+    font-size: 1.1rem;
+    font-weight: 800;
+    letter-spacing: 0.05em;
+    cursor: pointer;
+    box-shadow: 
+        0 8px 24px rgba(0, 0, 0, 0.45),
+        0 0 18px rgba(255, 255, 255, 0.4),
+        inset 0 4px 6px rgba(255, 255, 255, 0.85);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    user-select: none;
+    z-index: 5;
+    transition: transform 0.15s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.15s ease;
+}
+
+.center-spin-button:hover {
+    transform: translate(-50%, -50%) scale(1.08);
+    box-shadow: 
+        0 12px 28px rgba(0, 0, 0, 0.5),
+        0 0 25px #ffffff,
+        inset 0 4px 6px rgba(255, 255, 255, 0.9);
+}
+
+.center-spin-button:active {
+    transform: translate(-50%, -50%) scale(0.94);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+.center-spin-button:disabled {
+    cursor: not-allowed;
+    background: radial-gradient(circle, #64748b 0%, #475569 100%);
+    color: #94a3b8;
+    border-color: #475569;
+    box-shadow: none;
+}
+
+.quick-status {
+    margin-top: 1rem;
+    text-align: center;
+}
+
+#status-hint {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    background: rgba(30, 41, 59, 0.4);
+    padding: 0.5rem 1.1rem;
+    border-radius: 9999px;
+    border: 1px solid var(--border-color);
+}
+
+kbd {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 4px;
+    padding: 0.1rem 0.4rem;
+    font-size: 0.75rem;
+    font-family: monospace;
+    box-shadow: 0 1px 0 rgba(0,0,0,0.5);
+}
+
+/* ==========================================================================
+   CONTROLS & TABS (CHOICES, SETTINGS, HISTORY)
+   ========================================================================== */
+.controls-section {
+    background: var(--bg-card);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--border-color);
+    border-radius: 20px;
+    padding: 1.5rem;
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
+    min-height: 520px;
+    display: flex;
+    flex-direction: column;
+}
+
+.tabs-nav {
+    display: flex;
+    gap: 0.5rem;
+    background: rgba(15, 23, 42, 0.5);
+    padding: 0.35rem;
+    border-radius: 12px;
+    margin-bottom: 1.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.tab-btn {
+    flex: 1;
+    background: none;
+    border: none;
+    padding: 0.7rem 0.5rem;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    font-weight: 600;
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    transition: all 0.2s ease;
+}
+
+.tab-btn svg {
+    width: 16px;
+    height: 16px;
+}
+
+.tab-btn:hover {
+    color: var(--text-main);
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.tab-btn.active {
+    color: #ffffff;
+    background: var(--blue-primary);
+    box-shadow: 0 4px 12px var(--blue-glow);
+}
+
+.tab-content-container {
+    flex-grow: 1;
+    position: relative;
+}
+
+.tab-pane {
+    display: none;
+    flex-direction: column;
+    height: 100%;
+}
+
+.tab-pane.active {
+    display: flex;
+}
+
+/* Tab 1: Choices Panel */
+.add-item-form {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.add-item-form input[type="text"] {
+    flex-grow: 1;
+    background: rgba(15, 23, 42, 0.6);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 0.75rem 1rem;
+    color: var(--text-main);
+    font-size: 0.95rem;
+    outline: none;
+    transition: all 0.2s ease;
+}
+
+.add-item-form input[type="text"]:focus {
+    border-color: var(--blue-light);
+    box-shadow: 0 0 10px rgba(59, 130, 246, 0.25);
+}
+
+/* Button colors that suit the blue accent scheme */
+.btn-primary {
+    background: linear-gradient(135deg, var(--blue-primary) 0%, var(--blue-hover) 100%);
+    border: 1px solid rgba(147, 197, 253, 0.25);
+    color: white;
+    font-weight: 600;
+    padding: 0.75rem 1.25rem;
+    border-radius: 8px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 12px var(--blue-glow);
+}
+
+.btn-primary:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 18px var(--blue-glow);
+    background: linear-gradient(135deg, #3b82f6 0%, var(--blue-primary) 100%);
+}
+
+.btn-primary:active {
+    transform: translateY(1px);
+}
+
+.bulk-actions-row {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1.2rem;
+}
+
+.btn-secondary {
+    flex: 1;
+    background: rgba(30, 41, 59, 0.5);
+    border: 1px solid var(--border-color);
+    color: var(--text-main);
+    font-weight: 500;
+    padding: 0.6rem;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4rem;
+    transition: all 0.2s ease;
+}
+
+.btn-secondary:hover {
+    background: rgba(30, 41, 59, 0.8);
+    border-color: rgba(255, 255, 255, 0.15);
+}
+
+.btn-danger {
+    background: rgba(239, 68, 68, 0.15);
+    border: 1px solid rgba(239, 68, 68, 0.3);
+    color: #fca5a5;
+    font-weight: 500;
+    padding: 0.6rem 0.8rem;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4rem;
+    transition: all 0.2s ease;
+}
+
+.btn-danger:hover {
+    background: rgba(239, 68, 68, 0.25);
+    border-color: rgba(239, 68, 68, 0.5);
+    color: white;
+}
+
+.list-scroll-area {
+    flex-grow: 1;
+    max-height: 290px;
+    overflow-y: auto;
+    padding-right: 0.25rem;
+}
+
+.list-scroll-area::-webkit-scrollbar {
+    width: 6px;
+}
+.list-scroll-area::-webkit-scrollbar-track {
+    background: transparent;
+}
+.list-scroll-area::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 99px;
+}
+.list-scroll-area::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.items-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.item-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: rgba(15, 23, 42, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    padding: 0.6rem 0.8rem;
+    border-radius: 8px;
+    animation: slide-in 0.2s ease forwards;
+}
+
+.item-color-indicator {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    margin-right: 0.8rem;
+    flex-shrink: 0;
+    box-shadow: 0 0 6px rgba(255,255,255,0.2);
+}
+
+.item-text {
+    flex-grow: 1;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--text-main);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.item-actions {
+    display: flex;
+    gap: 0.25rem;
+}
+
+.btn-icon {
+    background: none;
+    border: none;
+    color: var(--text-muted);
+    cursor: pointer;
+    padding: 0.3rem;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.15s ease;
+}
+
+.btn-icon svg {
+    width: 14px;
+    height: 14px;
+}
+
+.btn-icon:hover {
+    color: var(--text-main);
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.btn-icon.delete-item:hover {
+    color: var(--danger);
+    background: rgba(239, 68, 68, 0.15);
+}
+
+/* Tab 2: Settings Panel */
+.setting-group {
+    margin-bottom: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.setting-group label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.select-wrapper {
+    position: relative;
+    width: 100%;
+}
+
+.select-wrapper::after {
+    content: "▾";
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+}
+
+select {
+    width: 100%;
+    background: rgba(15, 23, 42, 0.6);
+    border: 1px solid var(--border-color);
+    padding: 0.75rem 1rem;
+    border-radius: 8px;
+    color: var(--text-main);
+    font-size: 0.95rem;
+    cursor: pointer;
+    outline: none;
+    appearance: none;
+    transition: all 0.2s ease;
+}
+
+select:focus {
+    border-color: var(--blue-light);
+    box-shadow: 0 0 10px rgba(59, 130, 246, 0.25);
+}
+
+select option {
+    background: var(--bg-dark);
+    color: var(--text-main);
+}
+
+.slider-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.slider-badge {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid var(--border-color);
+    padding: 0.2rem 0.6rem;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+input[type="range"] {
+    width: 100%;
+    height: 6px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 3px;
+    outline: none;
+    appearance: none;
+    cursor: pointer;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+    appearance: none;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: var(--blue-primary);
+    box-shadow: 0 0 8px var(--blue-glow);
+    transition: transform 0.1s ease;
+}
+
+input[type="range"]::-webkit-slider-thumb:hover {
+    transform: scale(1.25);
+}
+
+.volume-slider-row {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+}
+
+.volume-slider-row .btn-icon {
+    padding: 0.5rem;
+    background: rgba(15, 23, 42, 0.4);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+}
+
+.toggle-switch {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    cursor: pointer;
+    user-select: none;
+}
+
+.toggle-switch input {
+    display: none;
+}
+
+.slider-round {
+    position: relative;
+    width: 44px;
+    height: 22px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 11px;
+    transition: background 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.slider-round::before {
+    content: "";
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    left: 2px;
+    bottom: 2px;
+    background: white;
+    border-radius: 50%;
+    transition: transform 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.toggle-switch input:checked + .slider-round {
+    background: var(--blue-primary);
+}
+
+.toggle-switch input:checked + .slider-round::before {
+    transform: translateX(22px);
+}
+
+.toggle-label {
+    font-size: 0.9rem !important;
+    font-weight: 500 !important;
+    color: var(--text-main) !important;
+    text-transform: none !important;
+    letter-spacing: normal !important;
+}
+
+/* Tab 3: History & Log */
+.history-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 0.6rem;
+}
+
+.history-title {
+    font-size: 0.95rem;
+    font-family: var(--font-header);
+    font-weight: 600;
+}
+
+.btn-danger-sm {
+    background: none;
+    border: none;
+    color: var(--text-muted);
+    font-size: 0.8rem;
+    font-weight: 500;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    transition: color 0.15s ease;
+}
+
+.btn-danger-sm:hover {
+    color: var(--danger);
+}
+
+.winners-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.winner-row {
+    background: rgba(16, 185, 129, 0.08);
+    border: 1px solid rgba(16, 185, 129, 0.2);
+    color: #a7f3d0;
+    padding: 0.6rem 0.8rem;
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.9rem;
+    font-weight: 500;
+    animation: slide-in 0.25s ease forwards;
+}
+
+.winner-time {
+    font-size: 0.75rem;
+    color: rgba(167, 243, 208, 0.7);
+}
+
+.history-empty {
+    text-align: center;
+    color: var(--text-muted);
+    padding: 2.5rem 1rem;
+    font-size: 0.85rem;
+    line-height: 1.5;
+}
+
+/* ==========================================================================
+   MODALS & OVERLAYS
+   ========================================================================== */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(7, 10, 19, 0.85);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+.modal-overlay.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.modal-content {
+    background: rgba(20, 27, 45, 0.98);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    box-shadow: 
+        0 24px 60px rgba(0, 0, 0, 0.7),
+        0 0 40px var(--blue-glow);
+    border-radius: 24px;
+    padding: 2.5rem;
+    width: 90%;
+    max-width: 480px;
+    text-align: center;
+    transform: translateY(20px) scale(0.95);
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.modal-overlay.active .modal-content {
+    transform: translateY(0) scale(1);
+}
+
+.winner-trophy {
+    font-size: 3.5rem;
+    margin-bottom: 0.75rem;
+    animation: trophy-shake 0.8s ease-in-out infinite alternate;
+}
+
+.winner-card h2 {
+    font-family: var(--font-header);
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-main);
+    margin-bottom: 0.5rem;
+}
+
+.winner-display-name {
+    font-family: var(--font-header);
+    font-size: 2.3rem;
+    font-weight: 800;
+    background: linear-gradient(135deg, #ffffff 0%, #93c5fd 50%, var(--blue-primary) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin: 1.2rem 0;
+    word-break: break-word;
+    text-shadow: 0 0 20px rgba(37, 99, 235, 0.3);
+}
+
+.modal-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-top: 1.5rem;
+}
+
+@media (min-width: 480px) {
+    .modal-buttons {
+        flex-direction: row;
+    }
+    .modal-buttons button {
+        flex: 1;
+    }
+}
+
+.btn-primary-lg {
+    background: linear-gradient(135deg, var(--blue-primary) 0%, var(--blue-hover) 100%);
+    border: 1px solid rgba(147, 197, 253, 0.3);
+    color: white;
+    font-family: var(--font-header);
+    font-size: 1.05rem;
+    font-weight: 700;
+    padding: 0.9rem 1.8rem;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 15px var(--blue-glow);
+}
+
+.btn-primary-lg:hover {
+    transform: scale(1.03);
+    box-shadow: 0 6px 20px var(--blue-glow);
+    background: linear-gradient(135deg, #3b82f6 0%, var(--blue-primary) 100%);
+}
+
+.btn-secondary-lg {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: var(--text-main);
+    font-family: var(--font-header);
+    font-size: 1.05rem;
+    font-weight: 600;
+    padding: 0.9rem 1.8rem;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn-secondary-lg:hover {
+    background: rgba(255, 255, 255, 0.15);
+}
+
+.bulk-card {
+    max-width: 520px;
+    text-align: left;
+}
+
+.bulk-card h2 {
+    font-family: var(--font-header);
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.modal-desc {
+    color: var(--text-muted);
+    font-size: 0.88rem;
+    margin-bottom: 1.2rem;
+    line-height: 1.5;
+}
+
+#bulk-textarea {
+    width: 100%;
+    background: rgba(15, 23, 42, 0.85);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 1rem;
+    color: var(--text-main);
+    font-size: 0.95rem;
+    line-height: 1.5;
+    outline: none;
+    resize: vertical;
+    transition: border-color 0.2s ease;
+}
+
+#bulk-textarea:focus {
+    border-color: var(--blue-light);
+}
+
+/* ==========================================================================
+   SEO CONTENT & FEATURES SECTION (Homepage informational boost)
+   ========================================================================== */
+.seo-content-section {
+    max-width: 1200px;
+    margin: 2rem auto 3rem auto;
+    padding: 0 1.5rem;
+}
+
+.seo-block-header {
+    text-align: center;
+    margin-bottom: 2.5rem;
+}
+
+.seo-block-header h2 {
+    font-family: var(--font-header);
+    font-size: 2rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    color: #ffffff;
+    margin-bottom: 0.75rem;
+}
+
+.seo-block-header p {
+    color: var(--text-muted);
+    font-size: 1rem;
+    max-width: 680px;
+    margin: 0 auto;
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 3.5rem;
+}
+
+.feature-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    padding: 1.75rem;
+    transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.feature-card:hover {
+    transform: translateY(-3px);
+    border-color: rgba(59, 130, 246, 0.35);
+}
+
+.feature-icon-box {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    background: var(--blue-badge-bg);
+    border: 1px solid var(--blue-badge-border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.25rem;
+    color: var(--blue-light);
+}
+
+.feature-card h3 {
+    font-family: var(--font-header);
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 0.6rem;
+    color: #ffffff;
+}
+
+.feature-card p {
+    font-size: 0.92rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+}
+
+/* Steps / How to Use Grid */
+.steps-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 3.5rem;
+}
+
+.step-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    padding: 1.75rem;
+    position: relative;
+}
+
+.step-number {
+    position: absolute;
+    top: 1rem;
+    right: 1.25rem;
+    font-family: var(--font-header);
+    font-size: 2rem;
+    font-weight: 800;
+    color: rgba(59, 130, 246, 0.2);
+}
+
+.step-card h3 {
+    font-family: var(--font-header);
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    color: #ffffff;
+}
+
+.step-card p {
+    font-size: 0.92rem;
+    color: var(--text-muted);
+    line-height: 1.55;
+}
+
+/* FAQ Accordion / Cards */
+.faq-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 1.25rem;
+}
+
+.faq-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 14px;
+    padding: 1.5rem;
+}
+
+.faq-card h4 {
+    font-family: var(--font-header);
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 0.6rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.faq-card h4 i {
+    width: 18px;
+    height: 18px;
+    color: var(--blue-light);
+    flex-shrink: 0;
+}
+
+.faq-card p {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+}
+
+/* ==========================================================================
+   CONTENT PAGES (About Us, Privacy Policy, Terms of Use)
+   ========================================================================== */
+.content-page-wrapper {
+    max-width: 960px;
+    width: 100%;
+    margin: 1.5rem auto 3.5rem auto;
+    padding: 0 1.5rem;
+}
+
+.page-hero-banner {
+    text-align: center;
+    margin-bottom: 2.5rem;
+    padding: 1rem 0;
+}
+
+.breadcrumbs {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-bottom: 1rem;
+}
+
+.breadcrumbs a {
+    color: #93c5fd;
+    text-decoration: none;
+}
+
+.breadcrumbs a:hover {
+    text-decoration: underline;
+}
+
+.page-title {
+    font-family: var(--font-header);
+    font-size: 2.5rem;
+    font-weight: 800;
+    letter-spacing: -0.025em;
+    color: #ffffff;
+    margin-bottom: 0.75rem;
+}
+
+.page-tagline {
+    font-size: 1.1rem;
+    color: var(--text-muted);
+    max-width: 700px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+.prose-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 20px;
+    padding: 2.5rem;
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.3);
+}
+
+.prose-card h2 {
+    font-family: var(--font-header);
+    font-size: 1.55rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin: 2rem 0 0.85rem 0;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    padding-bottom: 0.5rem;
+}
+
+.prose-card h2:first-of-type {
+    margin-top: 0;
+}
+
+.prose-card h3 {
+    font-family: var(--font-header);
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #e2e8f0;
+    margin: 1.5rem 0 0.5rem 0;
+}
+
+.prose-card p {
+    font-size: 0.98rem;
+    line-height: 1.7;
+    color: #cbd5e1;
+    margin-bottom: 1.25rem;
+}
+
+.prose-card ul, .prose-card ol {
+    margin: 0.5rem 0 1.5rem 1.5rem;
+    color: #cbd5e1;
+    line-height: 1.7;
+}
+
+.prose-card li {
+    margin-bottom: 0.5rem;
+}
+
+.prose-highlight-box {
+    background: rgba(37, 99, 235, 0.08);
+    border: 1px solid rgba(59, 130, 246, 0.25);
+    border-left: 4px solid var(--blue-primary);
+    border-radius: 8px;
+    padding: 1.25rem 1.5rem;
+    margin: 1.5rem 0;
+}
+
+.prose-highlight-box p {
+    margin-bottom: 0;
+    color: #e2e8f0;
+}
+
+.contact-callout-box {
+    background: rgba(254, 146, 27, 0.1);
+    border: 1px solid rgba(254, 146, 27, 0.35);
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-top: 2rem;
+    text-align: center;
+}
+
+.contact-callout-box h3 {
+    font-family: var(--font-header);
+    font-size: 1.3rem;
+    color: #ffffff;
+    margin-bottom: 0.5rem;
+}
+
+.contact-callout-box p {
+    color: var(--text-muted);
+    margin-bottom: 1rem;
+}
+
+.contact-gmail-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    background: #fe921b;
+    color: #0f172a !important;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 1.05rem;
+    padding: 0.75rem 1.5rem;
+    border-radius: 9999px;
+    box-shadow: 0 4px 15px rgba(254, 146, 27, 0.3);
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.contact-gmail-pill:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(254, 146, 27, 0.45);
+}
+
+@media (max-width: 640px) {
+    .prose-card {
+        padding: 1.5rem;
+    }
+    .page-title {
+        font-size: 1.9rem;
+    }
+}
+
+/* ==========================================================================
+   SITE FOOTER (Color Code: #fe921b)
+   Logo: Pickerwheel.live
+   Contact email only: pickerwheel369@gmail.com
+   Quick links: About Us, Privacy Policy, Terms of Use
+   No phone number, no clutter
+   ========================================================================== */
+.site-footer {
+    background-color: var(--brand-orange);
+    color: var(--brand-orange-text);
+    width: 100%;
+    margin-top: auto;
+    padding: 3rem 1.5rem 1.5rem 1.5rem;
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.15);
+}
+
+.site-footer-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 2.5rem;
+    margin-bottom: 2.5rem;
+}
+
+.footer-brand-col {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.footer-logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.65rem;
+    text-decoration: none;
+    color: #0f172a;
+}
+
+.footer-logo-icon {
+    font-size: 1.8rem;
+    line-height: 1;
+}
+
+.footer-logo-text {
+    font-family: var(--font-header);
+    font-size: 1.45rem;
+    font-weight: 700; /* slightly bold */
+    letter-spacing: -0.02em;
+    color: #0f172a;
+}
+
+.footer-tagline {
+    font-size: 0.95rem;
+    color: #1e293b;
+    max-width: 440px;
+    line-height: 1.5;
+    font-weight: 500;
+}
+
+.footer-contact-box {
+    margin-top: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+}
+
+.footer-contact-label {
+    font-size: 0.82rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #334155;
+}
+
+.footer-contact-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #0f172a;
+    font-weight: 700;
+    text-decoration: none;
+    font-size: 1.05rem;
+    transition: opacity 0.15s ease;
+}
+
+.footer-contact-link:hover {
+    text-decoration: underline;
+    opacity: 0.85;
+}
+
+.footer-contact-link i {
+    width: 18px;
+    height: 18px;
+}
+
+.footer-links-col {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.footer-col-heading {
+    font-family: var(--font-header);
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: #0f172a;
+    letter-spacing: -0.01em;
+}
+
+.footer-nav-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.65rem;
+}
+
+.footer-nav-list li a {
+    color: #0f172a;
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    transition: transform 0.15s ease, opacity 0.15s ease;
+}
+
+.footer-nav-list li a:hover {
+    opacity: 0.8;
+    transform: translateX(3px);
+}
+
+.footer-bottom-bar {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(15, 23, 42, 0.18);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    font-size: 0.88rem;
+    font-weight: 500;
+    color: #1e293b;
+}
+
+.footer-no-phone-note {
+    font-size: 0.84rem;
+    color: #334155;
+    font-weight: 600;
+}
+
+@media (max-width: 768px) {
+    .site-footer-inner {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    .footer-bottom-bar {
+        flex-direction: column;
+        text-align: center;
+    }
+}
+
+/* ==========================================================================
+   ANIMATIONS
+   ========================================================================== */
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+}
+
+@keyframes trophy-shake {
+    0% { transform: rotate(-8deg); }
+    100% { transform: rotate(8deg); }
+}
+
+@keyframes pointer-wiggle {
+    0% { transform: translateX(-50%) rotate(0deg); }
+    100% { transform: translateX(-50%) rotate(-12deg); }
+}
+
+@keyframes slide-in {
+    0% { opacity: 0; transform: translateY(8px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+
+/* ==========================================================================
+   PAGE MODALS (About Us, Privacy Policy, Terms of Use)
+   Provides 100% standalone single-file browsing
+   ========================================================================== */
+.page-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(7, 10, 19, 0.94);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    z-index: 2500;
+    overflow-y: auto;
+    display: none;
+    padding: 2rem 1rem 4rem 1rem;
+    animation: fadeInModal 0.25s ease forwards;
+}
+
+.page-modal-overlay.active {
+    display: block;
+}
+
+.page-modal-container {
+    max-width: 960px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.page-modal-header-bar {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 1.25rem;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    padding: 0.5rem 0;
+}
+
+.btn-page-close {
+    background: #0f172a;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    color: #ffffff;
+    font-family: var(--font-header);
+    font-size: 0.95rem;
+    font-weight: 700;
+    padding: 0.55rem 1.35rem;
+    border-radius: 9999px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    transition: all 0.2s ease;
+}
+
+.btn-page-close i, .btn-page-close svg {
+    width: 16px;
+    height: 16px;
+}
+
+.btn-page-close:hover {
+    background: #ef4444;
+    border-color: #ef4444;
+    transform: translateY(-1px);
+    box-shadow: 0 6px 20px rgba(239, 68, 68, 0.4);
+}
+
+@keyframes fadeInModal {
+    from { opacity: 0; transform: scale(0.98); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+</style>
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+    <div class="stars-bg"></div>
+    <div class="glowing-orb orb-1"></div>
+    <div class="glowing-orb orb-2"></div>
+
+    <!-- ==========================================
+         TOP HEADER (Color Code: #fe921b)
+         Logo: Pickerwheel.live
+         Navigation: Home | Pickerwheel | Contact
+         Contact via Gmail only: pickerwheel369@gmail.com
+         No phone number
+         ========================================== -->
+    <header class="site-header">
+        <div class="site-header-inner">
+            <a href="#" onclick="closePageModal();" class="site-logo" aria-label="Pickerwheel.live Home">
+                <span class="site-logo-icon">🎡</span>
+                <span class="site-logo-text">Pickerwheel<span class="live-badge">.live</span></span>
+            </a>
+
+            <nav class="site-nav" aria-label="Main Navigation">
+                <a href="#" onclick="closePageModal();" class="nav-link active">Home</a>
+                <a href="#picker-wheel" class="nav-link">Pickerwheel</a>
+                <a href="mailto:pickerwheel369@gmail.com" class="nav-link nav-contact-btn" title="Contact via Gmail">
+                    <i data-lucide="mail"></i> Contact
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ==========================================
+         AD SECTION 1 (728x90) - BELOW HEADER
+         Paste your Google AdSense or banner ad code below:
+         ========================================== -->
+    <section class="ad-banner-section" aria-label="Header Advertisement">
+        <div class="ad-card-728x90">
+            <span class="ad-label-tag">Advertisement</span>
+            <!-- BEGIN AD CODE PLACEHOLDER (Paste your 728x90 ad script below) -->
+            <div class="ad-placeholder-content">
+                <i data-lucide="layout-grid"></i>
+                <span><strong>728 x 90 Leaderboard Ad Space</strong> &bull; Place your ad script here</span>
+            </div>
+            <!-- END AD CODE PLACEHOLDER -->
+        </div>
+    </section>
+
+    <!-- ==========================================
+         HERO SECTION (Blue-accented buttons and highlights)
+         ========================================== -->
+    <section class="hero-section">
+        <!-- Blue-accented Highlights -->
+        <div class="hero-highlights-row">
+            <span class="hero-highlight-pill">
+                <i data-lucide="sparkles"></i> 100% Free &amp; Unbiased
+            </span>
+            <span class="hero-highlight-pill">
+                <i data-lucide="zap"></i> Instant Decisions
+            </span>
+            <span class="hero-highlight-pill">
+                <i data-lucide="shield-check"></i> No Sign-Up Required
+            </span>
+            <span class="hero-highlight-pill">
+                <i data-lucide="party-popper"></i> Audio &amp; Confetti Celebration
+            </span>
+        </div>
+
+        <h1 class="hero-title">Free Online Random Decision Maker &amp; Wheel Spinner</h1>
+        <p class="hero-subtitle">
+            Need to pick a lucky winner, call on a student, make a tough choice, or decide dinner? 
+            Add your choices, spin the wheel, and let fate deliver a fair, thrilling result in seconds!
+        </p>
+
+        <!-- Blue-accented Hero Action Buttons -->
+        <div class="hero-buttons-row">
+            <a href="#picker-wheel" class="btn-blue-primary">
+                <i data-lucide="play-circle"></i> Spin The Wheel
+            </a>
+            <a href="#how-it-works" class="btn-blue-secondary">
+                <i data-lucide="help-circle"></i> How It Works
+            </a>
+        </div>
+    </section>
+
+    <!-- ==========================================
+         PICKER WHEEL APP SECTION
+         ========================================== -->
+    <div id="picker-wheel" class="app-wrapper">
+        <main class="app-container">
+            <!-- Left Section: Spin Wheel Canvas Area -->
+            <section class="wheel-section" aria-label="Interactive Wheel">
+                <div class="wheel-outer-container">
+                    <div class="wheel-pointer-container">
+                        <!-- Top pointer pointing downwards -->
+                        <div class="wheel-pointer"></div>
+                    </div>
+                    
+                    <div class="wheel-inner-container">
+                        <canvas id="wheel-canvas" width="600" height="600"></canvas>
+                        <!-- Iconic center spin button -->
+                        <button id="spin-button" class="center-spin-button" aria-label="Spin the wheel">
+                            <span class="spin-text">SPIN</span>
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="quick-status">
+                    <span id="status-hint">Click the center SPIN button or press <kbd>Space</kbd>!</span>
+                </div>
+            </section>
+
+            <!-- Right Section: Tabbed Control Panel -->
+            <section class="controls-section" aria-label="Wheel Customization Panel">
+                <div class="tabs-nav">
+                    <button class="tab-btn active" data-tab="tab-inputs">
+                        <i data-lucide="list"></i> Choices
+                    </button>
+                    <button class="tab-btn" data-tab="tab-settings">
+                        <i data-lucide="settings"></i> Customize
+                    </button>
+                    <button class="tab-btn" data-tab="tab-history">
+                        <i data-lucide="history"></i> History
+                    </button>
+                </div>
+
+                <div class="tab-content-container">
+                    <!-- Tab 1: Inputs & List Manager -->
+                    <div id="tab-inputs" class="tab-pane active">
+                        <form id="add-item-form" class="add-item-form" onsubmit="return false;">
+                            <input type="text" id="new-item-input" placeholder="Type a choice..." maxlength="40" autocomplete="off" aria-label="Add new choice">
+                            <button type="submit" id="add-item-btn" class="btn-primary" aria-label="Add choice">
+                                <i data-lucide="plus"></i> Add
+                            </button>
+                        </form>
+
+                        <div class="bulk-actions-row">
+                            <button id="shuffle-btn" class="btn-secondary">
+                                <i data-lucide="shuffle"></i> Shuffle
+                            </button>
+                            <button id="bulk-btn" class="btn-secondary">
+                                <i data-lucide="edit-3"></i> Bulk Add
+                            </button>
+                            <button id="clear-btn" class="btn-danger">
+                                <i data-lucide="trash-2"></i> Clear All
+                            </button>
+                        </div>
+
+                        <div class="list-scroll-area">
+                            <ul id="items-list" class="items-list">
+                                <!-- Choices list items will be injected dynamically -->
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Tab 2: Customization & Settings -->
+                    <div id="tab-settings" class="tab-pane">
+                        <div class="setting-group">
+                            <label for="theme-select">Color Theme</label>
+                            <div class="select-wrapper">
+                                <select id="theme-select">
+                                    <option value="neon">Neon Nights (Cyan, Pink, Violet)</option>
+                                    <option value="pastel">Pastel Dreams (Soft Lavender, Mint)</option>
+                                    <option value="sunset">Sunset Glow (Coral, Orange, Gold)</option>
+                                    <option value="ocean">Ocean Breeze (Turquoise, Deep Blue)</option>
+                                    <option value="emerald">Emerald Forest (Mint, Forest Green)</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="setting-group">
+                            <div class="slider-header">
+                                <label for="duration-slider">Spin Duration</label>
+                                <span id="duration-val" class="slider-badge">5s</span>
+                            </div>
+                            <input type="range" id="duration-slider" min="2" max="15" value="5" step="1">
+                        </div>
+
+                        <div class="setting-group">
+                            <div class="slider-header">
+                                <label for="volume-slider">Sound Volume</label>
+                                <span id="volume-val" class="slider-badge">70%</span>
+                            </div>
+                            <div class="volume-slider-row">
+                                <button id="volume-toggle-btn" class="btn-icon" aria-label="Mute sound">
+                                    <i data-lucide="volume-2" id="volume-icon"></i>
+                                </button>
+                                <input type="range" id="volume-slider" min="0" max="100" value="70">
+                            </div>
+                        </div>
+
+                        <div class="setting-group checkbox-group">
+                            <label class="toggle-switch">
+                                <input type="checkbox" id="eliminate-toggle" checked>
+                                <span class="slider-round"></span>
+                                <span class="toggle-label">Auto-remove winner from wheel</span>
+                            </label>
+                        </div>
+
+                        <div class="setting-group checkbox-group">
+                            <label class="toggle-switch">
+                                <input type="checkbox" id="confetti-toggle" checked>
+                                <span class="slider-round"></span>
+                                <span class="toggle-label">Enable confetti celebration</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Tab 3: History & Log -->
+                    <div id="tab-history" class="tab-pane">
+                        <div class="history-actions">
+                            <h3 class="history-title">Spin Results History</h3>
+                            <button id="clear-history-btn" class="btn-danger-sm">
+                                <i data-lucide="trash-2"></i> Clear History
+                            </button>
+                        </div>
+                        <div class="list-scroll-area">
+                            <ul id="winners-list" class="winners-list">
+                                <li class="history-empty">No spins recorded yet! Spin the wheel to begin.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- ==========================================
+         AD SECTION 2 (728x90) - BELOW PICKER WHEEL
+         Paste your Google AdSense or banner ad code below:
+         ========================================== -->
+    <section class="ad-banner-section" aria-label="Wheel Bottom Advertisement">
+        <div class="ad-card-728x90">
+            <span class="ad-label-tag">Advertisement</span>
+            <!-- BEGIN AD CODE PLACEHOLDER (Paste your 728x90 ad script below) -->
+            <div class="ad-placeholder-content">
+                <i data-lucide="layout-grid"></i>
+                <span><strong>728 x 90 Leaderboard Ad Space</strong> &bull; Place your ad script here</span>
+            </div>
+            <!-- END AD CODE PLACEHOLDER -->
+        </div>
+    </section>
+
+    <!-- ==========================================
+         SEO INFORMATIONAL & FEATURE GUIDE SECTION
+         ========================================== -->
+    <section id="how-it-works" class="seo-content-section">
+        <div class="seo-block-header">
+            <h2>How to Use Pickerwheel.live</h2>
+            <p>Making random decisions has never been easier or more exciting. Follow these three quick steps:</p>
+        </div>
+
+        <div class="steps-grid">
+            <div class="step-card">
+                <span class="step-number">01</span>
+                <h3>Enter Your Choices</h3>
+                <p>Type your options into the input box or click <strong>Bulk Add</strong> to paste a whole list of names, prizes, or decisions all at once.</p>
+            </div>
+            <div class="step-card">
+                <span class="step-number">02</span>
+                <h3>Customize Your Spin</h3>
+                <p>Pick a colorful theme like Neon or Sunset, adjust the spin duration, set your audio volume, and choose whether to auto-remove winners.</p>
+            </div>
+            <div class="step-card">
+                <span class="step-number">03</span>
+                <h3>Click Spin &amp; Celebrate</h3>
+                <p>Hit the center <strong>SPIN</strong> button or press Spacebar. Enjoy authentic ticking sound effects and full-screen confetti upon winning!</p>
+            </div>
+        </div>
+
+        <div class="seo-block-header">
+            <h2>Popular Ways to Use Our Random Wheel</h2>
+            <p>From classrooms to game nights, discover how thousands of users leverage Pickerwheel.live every single day.</p>
+        </div>
+
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon-box">
+                    <i data-lucide="graduation-cap"></i>
+                </div>
+                <h3>Classrooms &amp; Teachers</h3>
+                <p>Engage students fairly by picking random volunteers, assigning presentation turns, or forming spontaneous study groups with zero bias.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon-box">
+                    <i data-lucide="gift"></i>
+                </div>
+                <h3>Giveaways &amp; Raffles</h3>
+                <p>Conduct transparent, live-streamed giveaway draws on YouTube, Twitch, or Instagram. Your audience can watch the wheel spin live.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon-box">
+                    <i data-lucide="utensils"></i>
+                </div>
+                <h3>Daily Decisions &amp; Food</h3>
+                <p>Stop wasting time asking "What should we eat tonight?" Put pizza, sushi, tacos, or pasta on the wheel and let it decide your dinner.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon-box">
+                    <i data-lucide="users"></i>
+                </div>
+                <h3>Agile Teams &amp; Standups</h3>
+                <p>Randomize speaking order in daily standups, assign sprint retro facilitators, or pick team members for code reviews fairly.</p>
+            </div>
+        </div>
+
+        <!-- FAQ Section -->
+        <div class="seo-block-header">
+            <h2>Frequently Asked Questions</h2>
+            <p>Everything you need to know about Pickerwheel.live's fairness, privacy, and customization features.</p>
+        </div>
+
+        <div class="faq-grid">
+            <div class="faq-card">
+                <h4><i data-lucide="check-circle-2"></i> Is the wheel truly random?</h4>
+                <p>Yes. Pickerwheel.live uses high-precision cryptographic pseudo-random generation combined with realistic deceleration physics to ensure mathematically uniform fairness.</p>
+            </div>
+
+            <div class="faq-card">
+                <h4><i data-lucide="check-circle-2"></i> How many choices can I add?</h4>
+                <p>You can add dozens of options! Our dynamic canvas automatically balances font sizing, wedge angles, and distinct color distribution for seamless readability.</p>
+            </div>
+
+            <div class="faq-card">
+                <h4><i data-lucide="check-circle-2"></i> Is Pickerwheel.live completely free?</h4>
+                <p>100% free forever. No subscriptions, no hidden paywalls, and no mandatory account creation required.</p>
+            </div>
+
+            <div class="faq-card">
+                <h4><i data-lucide="check-circle-2"></i> Are my choices saved?</h4>
+                <p>Your inputs remain safely stored in your browser's local cache so you never lose your list when refreshing the page.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+         MODALS & OVERLAYS
+         ========================================== -->
+    <!-- Modal 1: Winner Announcement Overlay -->
+    <div id="winner-modal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="winner-title">
+        <div class="modal-content winner-card">
+            <div class="winner-trophy">🏆</div>
+            <h2 id="winner-title">We Have a Winner!</h2>
+            <div id="winner-text" class="winner-display-name">Winner Name</div>
+            <div class="modal-buttons">
+                <button id="modal-close-btn" class="btn-primary-lg">Awesome!</button>
+                <button id="modal-remove-btn" class="btn-secondary-lg">Remove Choice</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal 2: Bulk Edit Choices -->
+    <div id="bulk-modal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="bulk-title">
+        <div class="modal-content bulk-card">
+            <h2 id="bulk-title">Bulk Import Choices</h2>
+            <p class="modal-desc">Type or paste your choices here, one per line. Blank lines will be skipped automatically.</p>
+            <textarea id="bulk-textarea" rows="10" placeholder="Choice A&#10;Choice B&#10;Choice C"></textarea>
+            <div class="modal-buttons">
+                <button id="bulk-cancel-btn" class="btn-secondary">Cancel</button>
+                <button id="bulk-import-btn" class="btn-primary">Import &amp; Update</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==========================================
+         SITE FOOTER (Color Code: #fe921b)
+         Logo: Pickerwheel.live
+         Contact email only: pickerwheel369@gmail.com
+         Quick links: About Us, Privacy Policy, Terms of Use
+         No phone number, no clutter
+         ========================================== -->
+    
+
+    <!-- Page Modal: About Us -->
+    <div id="about-modal" class="page-modal-overlay" role="dialog" aria-modal="true" aria-labelledby="about-title">
+        <div class="page-modal-container">
+            <div class="page-modal-header-bar">
+                <button class="btn-page-close" onclick="closePageModal()" aria-label="Close About Us">
+                    <i data-lucide="x"></i> Close
+                </button>
+            </div>
+            <div class="content-page-wrapper" style="margin: 0; padding: 0;">
+                <div class="page-hero-banner">
+            <nav class="breadcrumbs" aria-label="Breadcrumbs">
+                <a href="#" onclick="closePageModal(); return false;">Home</a>
+                <span>/</span>
+                <span>About Us</span>
+            </nav>
+            <h1 class="page-title">About Pickerwheel.live</h1>
+            <p class="page-tagline">
+                Making decision-making fun, fair, and effortless for millions of teachers, gamers, creators, and teams around the globe.
+            </p>
+        </div>
+
+        <article class="prose-card">
+            <h2><i data-lucide="sparkles"></i> Who We Are</h2>
+            <p>
+                Welcome to <strong>Pickerwheel.live</strong>, your go-to interactive online decision-making tool. We designed Pickerwheel.live out of a simple conviction: everyday choices shouldn't be stressful, and picking random winners should always be thrilling, visually engaging, and unequivocally fair.
+            </p>
+            <p>
+                Whether you are a teacher looking to call on students without bias, a social media influencer hosting a live prize giveaway, or a family debating what to have for dinner, our mission is to deliver an intuitive, distraction-free spinning experience right in your browser.
+            </p>
+
+            <div class="prose-highlight-box">
+                <p>
+                    <strong>Our Core Promise:</strong> Pickerwheel.live will always remain 100% free to use, requiring no account creation, no password setup, and no personal data submissions. Fair decisions belong to everyone.
+                </p>
+            </div>
+
+            <h2><i data-lucide="cpu"></i> True Algorithmic Randomness</h2>
+            <p>
+                Fairness is the heartbeat of our platform. When you spin the wheel on Pickerwheel.live, the outcome isn't predetermined or biased by entry order. Here's how our engine ensures pure fairness:
+            </p>
+            <ul>
+                <li><strong>Uniform Probability:</strong> Each wedge on the wheel is calculated with exact mathematical precision. If you input 10 choices, every single item has an exact 1-in-10 (10%) probability of winning.</li>
+                <li><strong>Cryptographic Random Seed:</strong> We utilize the modern browser's high-entropy random number generators combined with dynamic angular deceleration physics.</li>
+                <li><strong>Visual Physics Simulation:</strong> The wheel accelerates smoothly, coasts through dynamic rotations, and decelerates naturally with a physical pointer bounce. What you see is authentic simulated momentum.</li>
+            </ul>
+
+            <h2><i data-lucide="users"></i> Who Uses Pickerwheel.live?</h2>
+            <p>
+                Our versatile wheel spinner caters to a wide spectrum of creative and professional communities:
+            </p>
+            <ul>
+                <li><strong>Educators &amp; Classrooms:</strong> Teachers utilize our tool to randomly assign student speaking turns, choose group project partners, and gamify trivia quizzes.</li>
+                <li><strong>Streamers &amp; Content Creators:</strong> Twitch broadcasters, YouTubers, and Instagram creators rely on our live audio and confetti celebration effects to conduct transparent subscriber giveaways.</li>
+                <li><strong>Remote Agile Teams:</strong> Scrum masters and product managers use our wheel for daily standup speaker ordering, sprint retro icebreakers, and task delegation.</li>
+                <li><strong>Friends &amp; Families:</strong> From game night penalties to choosing weekend getaway destinations, we eliminate the dreaded "I don't know, you pick" dilemma.</li>
+            </ul>
+
+            <h2><i data-lucide="shield-check"></i> Privacy-First Philosophy</h2>
+            <p>
+                Unlike many modern web applications, Pickerwheel.live is built with a deep respect for your digital sovereignty. We do not require sign-ups, we do not harvest email lists, and your custom list choices stay safely stored in your own device's browser memory (Local Storage). When you close your browser, your choices remain yours alone.
+            </p>
+
+            <!-- Callout / CTA to the wheel -->
+            <div style="text-align: center; margin: 2.5rem 0 1rem 0;">
+                <a href="#picker-wheel" onclick="closePageModal();" class="btn-blue-primary">
+                    <i data-lucide="play-circle"></i> Try The Picker Wheel Now
+                </a>
+            </div>
+
+            <!-- Contact Box (Email only, no phone number) -->
+            <div class="contact-callout-box">
+                <h3>Have Feedback or Questions?</h3>
+                <p>We're continually refining Pickerwheel.live. Reach out directly to our team via Gmail:</p>
+                <a href="mailto:pickerwheel369@gmail.com" class="contact-gmail-pill">
+                    <i data-lucide="mail"></i> pickerwheel369@gmail.com
+                </a>
+            </div>
+        </article>
+            </div>
+        </div>
+    </div>
+
+    <!-- Page Modal: Privacy Policy -->
+    <div id="privacy-modal" class="page-modal-overlay" role="dialog" aria-modal="true" aria-labelledby="privacy-title">
+        <div class="page-modal-container">
+            <div class="page-modal-header-bar">
+                <button class="btn-page-close" onclick="closePageModal()" aria-label="Close Privacy Policy">
+                    <i data-lucide="x"></i> Close
+                </button>
+            </div>
+            <div class="content-page-wrapper" style="margin: 0; padding: 0;">
+                <div class="page-hero-banner">
+            <nav class="breadcrumbs" aria-label="Breadcrumbs">
+                <a href="#" onclick="closePageModal(); return false;">Home</a>
+                <span>/</span>
+                <span>Privacy Policy</span>
+            </nav>
+            <h1 class="page-title">Privacy Policy</h1>
+            <p class="page-tagline">
+                Last Updated: January 2026. Your privacy and online trust are foundational to our mission at Pickerwheel.live.
+            </p>
+        </div>
+
+        <article class="prose-card">
+            <h2><i data-lucide="shield"></i> 1. Introduction</h2>
+            <p>
+                At <strong>Pickerwheel.live</strong> ("we", "us", or "our"), accessible from https://pickerwheel.live, we consider the privacy of our visitors to be of paramount importance. This Privacy Policy document outlines the types of information that is collected and recorded by Pickerwheel.live and how we use it.
+            </p>
+            <p>
+                By using our website, you hereby consent to our Privacy Policy and agree to its terms. If you have any additional questions or require further information regarding our data practices, please do not hesitate to contact us via Gmail at <strong>pickerwheel369@gmail.com</strong>.
+            </p>
+
+            <h2><i data-lucide="user-x"></i> 2. Information We Do NOT Collect</h2>
+            <p>
+                Pickerwheel.live is designed to be fully functional without user registration:
+            </p>
+            <ul>
+                <li>We do <strong>not</strong> require you to register an account or provide your name.</li>
+                <li>We do <strong>not</strong> collect phone numbers, mailing addresses, or billing details.</li>
+                <li>We do <strong>not</strong> sell, rent, or trade your personal information to third parties.</li>
+            </ul>
+
+            <h2><i data-lucide="database"></i> 3. Browser Local Storage &amp; Choices Data</h2>
+            <p>
+                To provide a seamless experience where your entered choices, color settings, and spin duration are preserved between sessions, Pickerwheel.live utilizes the standard <strong>Web Storage API (localStorage)</strong> built into your web browser.
+            </p>
+            <div class="prose-highlight-box">
+                <p>
+                    <strong>Important:</strong> All items, names, or choices you input into the picker wheel remain strictly on your client device. They are never transmitted to, monitored by, or stored on our external servers. You can clear this data at any time by clicking "Clear All" or clearing your browser cache.
+                </p>
+            </div>
+
+            <h2><i data-lucide="badge-percent"></i> 4. Advertising &amp; Third-Party Cookies (Google AdSense)</h2>
+            <p>
+                To keep Pickerwheel.live 100% free for educators, students, gamers, and organizers worldwide, we display non-intrusive advertisements served by third-party advertising networks, including <strong>Google AdSense</strong>.
+            </p>
+            <ul>
+                <li>Third-party vendors, including Google, use cookies to serve ads based on a user's prior visits to our website or other websites on the Internet.</li>
+                <li>Google's use of advertising cookies (such as the DoubleClick cookie) enables it and its partners to serve personalized ads to our visitors based on their visit to Pickerwheel.live and other sites across the Web.</li>
+                <li>Users may opt out of personalized advertising by visiting the <a href="https://www.google.com/settings/ads" target="_blank" rel="noopener noreferrer" style="color: #93c5fd; text-decoration: underline;">Google Ads Settings</a>. Alternatively, you can opt out of a third-party vendor's use of cookies for personalized advertising by visiting <a href="https://www.aboutads.info" target="_blank" rel="noopener noreferrer" style="color: #93c5fd; text-decoration: underline;">www.aboutads.info</a>.</li>
+            </ul>
+
+            <h2><i data-lucide="file-text"></i> 5. Standard Log Files</h2>
+            <p>
+                Like virtually all modern web servers, Pickerwheel.live follows standard logging procedures. The information logged by these files includes internet protocol (IP) addresses, browser type, Internet Service Provider (ISP), date and time stamp, referring/exit pages, and possibly the number of clicks. These are not linked to any information that is personally identifiable. The sole purpose is to analyze trends, administer the site, prevent denial-of-service abuse, and gather broad demographic insights.
+            </p>
+
+            <h2><i data-lucide="lock"></i> 6. GDPR Data Protection Rights (EEA Visitors)</h2>
+            <p>
+                If you reside in the European Economic Area (EEA), you possess defined data protection rights under the General Data Protection Regulation (GDPR). Since we do not retain personally identifiable account data, our data processing footprint is minimal. However, you maintain the right to:
+            </p>
+            <ul>
+                <li>Request access to any personal data held about you.</li>
+                <li>Request rectification or erasure of your data.</li>
+                <li>Object to or restrict the processing of your data.</li>
+                <li>Exercise data portability rights.</li>
+            </ul>
+
+            <h2><i data-lucide="check-shield"></i> 7. CCPA Privacy Rights (California Residents)</h2>
+            <p>
+                Under the California Consumer Privacy Act (CCPA), California consumers have the right to request disclosure of categories and specific pieces of personal data collected, request deletion of collected data, and opt out of the sale of personal information. As stated, Pickerwheel.live does not sell personal data.
+            </p>
+
+            <h2><i data-lucide="smile"></i> 8. Children's Information (COPPA)</h2>
+            <p>
+                Protecting children when using the internet is especially critical to us. We encourage parents and guardians to monitor and guide their children's online activity. Pickerwheel.live does not knowingly collect any Personal Identifiable Information from children under the age of 13.
+            </p>
+
+            <h2><i data-lucide="mail"></i> 9. Contact Us</h2>
+            <p>
+                If you have questions, feedback, or require clarification regarding this Privacy Policy, please reach out to us exclusively via Gmail:
+            </p>
+            <div class="contact-callout-box">
+                <h3>Privacy Inquiries via Gmail Only</h3>
+                <p>We typically respond to privacy inquiries within 48 business hours:</p>
+                <a href="mailto:pickerwheel369@gmail.com" class="contact-gmail-pill">
+                    <i data-lucide="mail"></i> pickerwheel369@gmail.com
+                </a>
+            </div>
+        </article>
+            </div>
+        </div>
+    </div>
+
+    <!-- Page Modal: Terms of Use -->
+    <div id="terms-modal" class="page-modal-overlay" role="dialog" aria-modal="true" aria-labelledby="terms-title">
+        <div class="page-modal-container">
+            <div class="page-modal-header-bar">
+                <button class="btn-page-close" onclick="closePageModal()" aria-label="Close Terms of Use">
+                    <i data-lucide="x"></i> Close
+                </button>
+            </div>
+            <div class="content-page-wrapper" style="margin: 0; padding: 0;">
+                <div class="page-hero-banner">
+            <nav class="breadcrumbs" aria-label="Breadcrumbs">
+                <a href="#" onclick="closePageModal(); return false;">Home</a>
+                <span>/</span>
+                <span>Terms of Use</span>
+            </nav>
+            <h1 class="page-title">Terms of Use</h1>
+            <p class="page-tagline">
+                Last Updated: January 2026. Please read these terms carefully before utilizing Pickerwheel.live.
+            </p>
+        </div>
+
+        <article class="prose-card">
+            <h2><i data-lucide="file-check"></i> 1. Acceptance of Terms</h2>
+            <p>
+                By accessing, browsing, or using <strong>Pickerwheel.live</strong> (the "Service", "Website", or "Platform"), you acknowledge that you have read, understood, and agree to be legally bound by these Terms of Use ("Terms"). If you do not agree with any part of these terms, please discontinue use of the Website immediately.
+            </p>
+
+            <h2><i data-lucide="compass"></i> 2. Description of the Service</h2>
+            <p>
+                Pickerwheel.live provides a free, browser-based randomized decision-making application. Users can configure lists of choices, customize audio-visual wheel themes, and trigger physics-based wheel spins to select random outcomes for educational, entertainment, social media, and business purposes.
+            </p>
+
+            <h2><i data-lucide="award"></i> 3. Permitted and Lawful Use</h2>
+            <p>
+                You are granted a revocable, non-exclusive, non-transferable license to use Pickerwheel.live for lawful purposes:
+            </p>
+            <ul>
+                <li><strong>Classrooms &amp; Education:</strong> Teachers and students may freely use the wheel in virtual or physical classroom environments.</li>
+                <li><strong>Broadcasts &amp; Live Streams:</strong> Content creators on platforms such as Twitch, YouTube, and Facebook Gaming may capture and stream the wheel for interactive contests and giveaways.</li>
+                <li><strong>Personal &amp; Organizational Decision-Making:</strong> Individuals, families, and commercial teams may use the tool to streamline meetings, raffles, and daily choices.</li>
+            </ul>
+
+            <h2><i data-lucide="alert-triangle"></i> 4. Prohibited Conduct</h2>
+            <p>
+                When using Pickerwheel.live, you expressly agree not to:
+            </p>
+            <ul>
+                <li>Deploy automated bots, spiders, crawlers, or scrapers to extract data, flood requests, or interfere with website availability.</li>
+                <li>Attempt to bypass, disable, or tamper with any security features or client-side integrity mechanisms of the platform.</li>
+                <li>Use the platform in connection with unlawful, fraudulent, defamatory, discriminatory, or harassing activities.</li>
+            </ul>
+
+            <h2><i data-lucide="help-circle"></i> 5. Disclaimer of Warranties ("As-Is")</h2>
+            <p>
+                Pickerwheel.live is provided on an <strong>"AS IS"</strong> and <strong>"AS AVAILABLE"</strong> basis without warranties of any kind, whether express, implied, or statutory. 
+            </p>
+            <div class="prose-highlight-box">
+                <p>
+                    <strong>Decision-Making Disclaimer:</strong> While our randomization algorithms are engineered for uniform fairness, Pickerwheel.live is designed primarily as an entertainment and organizational aid. We do not accept responsibility for legal, financial, or personal consequences resulting from decisions made using our wheel.
+                </p>
+            </div>
+
+            <h2><i data-lucide="shield-alert"></i> 6. Limitation of Liability</h2>
+            <p>
+                To the fullest extent permitted by applicable law, in no event shall Pickerwheel.live, its owners, developers, or affiliates be liable for any direct, indirect, incidental, special, consequential, or punitive damages resulting from your use of, or inability to use, the platform or services.
+            </p>
+
+            <h2><i data-lucide="badge-dollar-sign"></i> 7. Third-Party Advertisements &amp; Links</h2>
+            <p>
+                The Website may display third-party advertisements (such as Google AdSense banners) or include links to external websites. We do not endorse, guarantee, or assume responsibility for any third-party products, services, content, or privacy practices. Interacting with third-party advertisements is solely at your own risk.
+            </p>
+
+            <h2><i data-lucide="copyright"></i> 8. Intellectual Property</h2>
+            <p>
+                All rights, titles, and interests in and to Pickerwheel.live, including its logo, original code, UI design, color schemes, graphics, and branding, remain the exclusive property of Pickerwheel.live. You may not copy, reproduce, distribute, or create derivative works without prior written consent.
+            </p>
+
+            <h2><i data-lucide="refresh-cw"></i> 9. Modifications to Service &amp; Terms</h2>
+            <p>
+                We reserve the right to modify, suspend, or discontinue any aspect of the service at any time without prior notice. We may update these Terms of Use periodically; continuing to use the platform after modifications constitutes your acceptance of the revised Terms.
+            </p>
+
+            <h2><i data-lucide="mail"></i> 10. Contact Information</h2>
+            <p>
+                For questions, concerns, or legal inquiries regarding these Terms of Use, please communicate with us strictly via Gmail:
+            </p>
+            <div class="contact-callout-box">
+                <h3>Contact via Gmail Only</h3>
+                <p>Feel free to reach out anytime for assistance:</p>
+                <a href="mailto:pickerwheel369@gmail.com" class="contact-gmail-pill">
+                    <i data-lucide="mail"></i> pickerwheel369@gmail.com
+                </a>
+            </div>
+        </article>
+            </div>
+        </div>
+    </div>
+
+    <footer class="site-footer">
+        <div class="site-footer-inner">
+            <div class="footer-brand-col">
+                <a href="#" onclick="closePageModal();" class="footer-logo">
+                    <span class="footer-logo-icon">🎡</span>
+                    <span class="footer-logo-text">Pickerwheel.live</span>
+                </a>
+                <p class="footer-tagline">
+                    The modern, clean, and unbiased random picker wheel. Make quick decisions, host giveaways, and make choices fun!
+                </p>
+                <div class="footer-contact-box">
+                    <span class="footer-contact-label">Contact Us via Gmail</span>
+                    <a href="mailto:pickerwheel369@gmail.com" class="footer-contact-link">
+                        <i data-lucide="mail"></i> pickerwheel369@gmail.com
+                    </a>
+                </div>
+            </div>
+
+            <div class="footer-links-col">
+                <h4 class="footer-col-heading">Quick Links</h4>
+                <ul class="footer-nav-list">
+                    <li><a href="#" onclick="closePageModal();"><i data-lucide="chevron-right"></i> Home</a></li>
+                    <li><a href="#picker-wheel"><i data-lucide="chevron-right"></i> Pickerwheel</a></li>
+                    <li><a href="#about" onclick="openPageModal('about'); return false;"><i data-lucide="chevron-right"></i> About Us</a></li>
+                    <li><a href="#privacy" onclick="openPageModal('privacy'); return false;"><i data-lucide="chevron-right"></i> Privacy Policy</a></li>
+                    <li><a href="#terms" onclick="openPageModal('terms'); return false;"><i data-lucide="chevron-right"></i> Terms of Use</a></li>
+                    <li><a href="mailto:pickerwheel369@gmail.com"><i data-lucide="chevron-right"></i> Contact</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom-bar">
+            <p>&copy; 2026 Pickerwheel.live. All rights reserved.</p>
+            <p class="footer-no-phone-note">Contact via Gmail only: pickerwheel369@gmail.com</p>
+        </div>
+    </footer>
+
+    <!-- Wheel Script Engine -->
+    <script>
+/**
+ * Picker Wheel - Core JavaScript Engine
+ * Handles drawing, physics, audio synthesis, and interface state.
+ */
+
+// --- 1. Global State Configuration ---
+const STATE = {
+    items: [
+        { text: "Pizza", color: "" },
+        { text: "Burgers", color: "" },
+        { text: "Sushi", color: "" },
+        { text: "Salad", color: "" },
+        { text: "Tacos", color: "" },
+        { text: "Pasta", color: "" }
+    ],
+    themes: {
+        neon: ['#06b6d4', '#ec4899', '#8b5cf6', '#10b981', '#f59e0b', '#3b82f6'],
+        pastel: ['#a78bfa', '#f472b6', '#38bdf8', '#34d399', '#fca5a5', '#fbbf24'],
+        sunset: ['#f97316', '#ef4444', '#ec4899', '#f59e0b', '#fb7185', '#db2777'],
+        ocean: ['#0f766e', '#0284c7', '#0369a1', '#2563eb', '#3b82f6', '#0d9488'],
+        emerald: ['#059669', '#10b981', '#34d399', '#047857', '#065f46', '#0f766e']
+    },
+    currentTheme: 'neon',
+    isSpinning: false,
+    currentAngle: 0,
+    spinDuration: 5,        // in seconds
+    volume: 0.7,
+    isMuted: false,
+    autoEliminate: true,
+    confettiEnabled: true,
+    history: []
+};
+
+// Physics/Spin variables
+let animationFrameId = null;
+let lastTickSegmentIndex = -1;
+let audioCtx = null;
+
+// --- 2. DOM Elements Cache ---
+const canvas = document.getElementById('wheel-canvas');
+const ctx = canvas.getContext('2d');
+const spinButton = document.getElementById('spin-button');
+const pointer = document.querySelector('.wheel-pointer');
+const themeSelect = document.getElementById('theme-select');
+const durationSlider = document.getElementById('duration-slider');
+const durationVal = document.getElementById('duration-val');
+const volumeSlider = document.getElementById('volume-slider');
+const volumeVal = document.getElementById('volume-val');
+const volumeIconBtn = document.getElementById('volume-toggle-btn');
+const volumeIcon = document.getElementById('volume-icon');
+const eliminateToggle = document.getElementById('eliminate-toggle');
+const confettiToggle = document.getElementById('confetti-toggle');
+const itemsList = document.getElementById('items-list');
+const newItemInput = document.getElementById('new-item-input');
+const addForm = document.getElementById('add-item-form');
+const shuffleBtn = document.getElementById('shuffle-btn');
+const bulkBtn = document.getElementById('bulk-btn');
+const clearBtn = document.getElementById('clear-btn');
+const winnersList = document.getElementById('winners-list');
+const clearHistoryBtn = document.getElementById('clear-history-btn');
+
+// Modals
+const winnerModal = document.getElementById('winner-modal');
+const winnerText = document.getElementById('winner-text');
+const modalCloseBtn = document.getElementById('modal-close-btn');
+const modalRemoveBtn = document.getElementById('modal-remove-btn');
+const bulkModal = document.getElementById('bulk-modal');
+const bulkTextarea = document.getElementById('bulk-textarea');
+const bulkCancelBtn = document.getElementById('bulk-cancel-btn');
+const bulkImportBtn = document.getElementById('bulk-import-btn');
+
+// --- 3. Web Audio API Synthesis ---
+function initAudio() {
+    if (!audioCtx) {
+        audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    }
+    if (audioCtx.state === 'suspended') {
+        audioCtx.resume();
+    }
+}
+
+/**
+ * Synthesizes a clean ticking sound for segment boundaries
+ */
+function playTickSound() {
+    if (STATE.isMuted || STATE.volume === 0) return;
+    initAudio();
+    if (!audioCtx) return;
+
+    try {
+        const osc = audioCtx.createOscillator();
+        const gainNode = audioCtx.createGain();
+
+        osc.connect(gainNode);
+        gainNode.connect(audioCtx.destination);
+
+        // Sound characteristics: short, rapid pitch decay (like a mechanical clock tick)
+        osc.type = 'triangle';
+        const now = audioCtx.currentTime;
+        
+        // Start high, drop frequency rapidly to make it "clicky"
+        osc.frequency.setValueAtTime(440, now);
+        osc.frequency.exponentialRampToValueAtTime(100, now + 0.04);
+        
+        // Gain (volume) envelope
+        gainNode.gain.setValueAtTime(STATE.volume * 0.4, now);
+        gainNode.gain.exponentialRampToValueAtTime(0.01, now + 0.04);
+
+        osc.start(now);
+        osc.stop(now + 0.05);
+    } catch (e) {
+        console.error("Audio Synthesis error: ", e);
+    }
+}
+
+/**
+ * Synthesizes a pleasant celebration fanfare
+ */
+function playWinSound() {
+    if (STATE.isMuted || STATE.volume === 0) return;
+    initAudio();
+    if (!audioCtx) return;
+
+    try {
+        const now = audioCtx.currentTime;
+        const notes = [
+            { note: 261.63, delay: 0 },    // C4
+            { note: 329.63, delay: 0.1 },  // E4
+            { note: 392.00, delay: 0.2 },  // G4
+            { note: 523.25, delay: 0.35 }  // C5 (sustained chord)
+        ];
+
+        notes.forEach((item) => {
+            const osc = audioCtx.createOscillator();
+            const gain = audioCtx.createGain();
+
+            osc.connect(gain);
+            gain.connect(audioCtx.destination);
+
+            osc.type = 'sine';
+            osc.frequency.setValueAtTime(item.note, now + item.delay);
+            
+            gain.gain.setValueAtTime(0, now + item.delay);
+            gain.gain.linearRampToValueAtTime(STATE.volume * 0.3, now + item.delay + 0.05);
+            gain.gain.exponentialRampToValueAtTime(0.001, now + item.delay + 0.65);
+
+            osc.start(now + item.delay);
+            osc.stop(now + item.delay + 0.7);
+        });
+    } catch (e) {
+        console.error(e);
+    }
+}
+
+// --- 4. Color Theme Operations ---
+function assignColors() {
+    const palette = STATE.themes[STATE.currentTheme];
+    STATE.items.forEach((item, index) => {
+        item.color = palette[index % palette.length];
+    });
+}
+
+function updateThemeVariables() {
+    const palette = STATE.themes[STATE.currentTheme];
+    // Set dynamic CSS properties based on theme colors for page styling coherence
+    document.documentElement.style.setProperty('--neon-primary', palette[0]);
+    document.documentElement.style.setProperty('--neon-secondary', palette[1]);
+    document.documentElement.style.setProperty('--neon-glow', `rgba(${hexToRgb(palette[0])}, 0.4)`);
+    
+    // Also animate floating orbs slightly to match colors
+    document.querySelector('.orb-1').style.background = `radial-gradient(circle, ${palette[0]} 0%, rgba(0,0,0,0) 70%)`;
+    document.querySelector('.orb-2').style.background = `radial-gradient(circle, ${palette[2 % palette.length]} 0%, rgba(0,0,0,0) 70%)`;
+    
+    drawWheel();
+}
+
+function hexToRgb(hex) {
+    const shorthandRegex = /^#?([a-f\d])([a-f\d])([a-f\d])$/i;
+    hex = hex.replace(shorthandRegex, (m, r, g, b) => r + r + g + g + b + b);
+    const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+    return result ? `${parseInt(result[1], 16)}, ${parseInt(result[2], 16)}, ${parseInt(result[3], 16)}` : '6, 182, 212';
+}
+
+// --- 5. Drawing the Wheel (HTML5 Canvas) ---
+function drawWheel() {
+    const numSegments = STATE.items.length;
+    const centerX = canvas.width / 2;
+    const centerY = canvas.height / 2;
+    const radius = Math.min(centerX, centerY) - 15;
+
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    if (numSegments === 0) {
+        // Draw placeholder text if no items are in the list
+        ctx.save();
+        ctx.beginPath();
+        ctx.arc(centerX, centerY, radius, 0, 2 * Math.PI);
+        ctx.fillStyle = '#1e293b';
+        ctx.fill();
+        ctx.lineWidth = 4;
+        ctx.strokeStyle = '#334155';
+        ctx.stroke();
+
+        ctx.fillStyle = STATE.themes[STATE.currentTheme][0];
+        ctx.font = 'bold 20px ' + getComputedStyle(document.documentElement).getPropertyValue('--font-header');
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        ctx.fillText('Add choices to begin!', centerX, centerY);
+        ctx.restore();
+        return;
+    }
+
+    const anglePerSegment = (2 * Math.PI) / numSegments;
+
+    // Draw Slices
+    for (let i = 0; i < numSegments; i++) {
+        const startRad = STATE.currentAngle + i * anglePerSegment;
+        const endRad = startRad + anglePerSegment;
+
+        ctx.beginPath();
+        ctx.moveTo(centerX, centerY);
+        ctx.arc(centerX, centerY, radius, startRad, endRad);
+        ctx.closePath();
+
+        // Slice Fill
+        ctx.fillStyle = STATE.items[i].color;
+        ctx.fill();
+
+        // Slice Edge Separator
+        ctx.lineWidth = 2.5;
+        ctx.strokeStyle = 'rgba(15, 23, 42, 0.4)';
+        ctx.stroke();
+
+        // Draw Text radially
+        ctx.save();
+        ctx.translate(centerX, centerY);
+        // Rotate to the center angle of this specific slice
+        ctx.rotate(startRad + anglePerSegment / 2);
+
+        // Styling the text
+        ctx.fillStyle = '#ffffff';
+        ctx.font = 'bold 22px ' + getComputedStyle(document.documentElement).getPropertyValue('--font-header');
+        ctx.textAlign = 'right';
+        ctx.textBaseline = 'middle';
+        ctx.shadowColor = 'rgba(0, 0, 0, 0.4)';
+        ctx.shadowBlur = 4;
+
+        // Truncate text if it is too long to fit
+        let text = STATE.items[i].text;
+        const maxTextWidth = radius - 70;
+        if (ctx.measureText(text).width > maxTextWidth) {
+            while (ctx.measureText(text + '...').width > maxTextWidth && text.length > 0) {
+                text = text.slice(0, -1);
+            }
+            text = text + '...';
+        }
+
+        // Write text facing outward (offset from center)
+        ctx.fillText(text, radius - 35, 0);
+        ctx.restore();
+    }
+
+    // Outer Rim border & details
+    ctx.save();
+    ctx.beginPath();
+    ctx.arc(centerX, centerY, radius, 0, 2 * Math.PI);
+    ctx.lineWidth = 10;
+    ctx.strokeStyle = '#ffffff';
+    ctx.stroke();
+    
+    // Outer shadow ring
+    ctx.beginPath();
+    ctx.arc(centerX, centerY, radius - 5, 0, 2 * Math.PI);
+    ctx.lineWidth = 1;
+    ctx.strokeStyle = 'rgba(0, 0, 0, 0.25)';
+    ctx.stroke();
+    ctx.restore();
+
+    // Blinking lights around rim during spin
+    if (STATE.isSpinning) {
+        ctx.save();
+        const numBulbs = 24;
+        const bulbAngle = (2 * Math.PI) / numBulbs;
+        const timeFactor = Math.floor(Date.now() / 150); // flicker every 150ms
+
+        for (let b = 0; b < numBulbs; b++) {
+            const active = (b + timeFactor) % 2 === 0;
+            const bAngle = b * bulbAngle;
+            const bx = centerX + (radius - 2.5) * Math.cos(bAngle);
+            const by = centerY + (radius - 2.5) * Math.sin(bAngle);
+
+            ctx.beginPath();
+            ctx.arc(bx, by, 3.5, 0, 2 * Math.PI);
+            ctx.fillStyle = active ? '#ffffff' : 'rgba(255,255,255,0.3)';
+            if (active) {
+                ctx.shadowColor = '#ffffff';
+                ctx.shadowBlur = 6;
+            }
+            ctx.fill();
+        }
+        ctx.restore();
+    }
+}
+
+// --- 6. Physics Easing & Spinning Execution ---
+function easeOutQuart(x) {
+    return 1 - Math.pow(1 - x, 4);
+}
+
+function spin() {
+    if (STATE.isSpinning || STATE.items.length === 0) return;
+    
+    initAudio();
+    STATE.isSpinning = true;
+    spinButton.disabled = true;
+    pointer.classList.add('active-bounce');
+    document.getElementById('status-hint').innerText = "Selecting a random choice...";
+
+    const startTime = Date.now();
+    const durationMs = STATE.spinDuration * 1000;
+    const startAngle = STATE.currentAngle;
+
+    // Pick a target angle change. Needs to do at least 5 full rotations, plus some random offset
+    const fullRotations = 5 + Math.floor(Math.random() * 5);
+    const extraOffset = Math.random() * (2 * Math.PI);
+    const targetAngleChange = (fullRotations * 2 * Math.PI) + extraOffset;
+
+    lastTickSegmentIndex = -1;
+
+    function animate() {
+        const elapsed = Date.now() - startTime;
+        const progress = Math.min(elapsed / durationMs, 1);
+        const easeVal = easeOutQuart(progress);
+
+        // Update wheel rotation angle
+        STATE.currentAngle = startAngle + (targetAngleChange * easeVal);
+
+        // Track slice crossings for tick sounds
+        const numSegments = STATE.items.length;
+        const anglePerSegment = (2 * Math.PI) / numSegments;
+        
+        // Pointer is at -Math.PI / 2 (top center). We want to find which segment is pointing up.
+        // Screen Pointer relative to canvas = 270 degrees (3 * Math.PI / 2)
+        // Segment under pointer = floor(((PointerAngle - CurrentWheelAngle) % 2pi) / SegmentAngle)
+        const pointerAngle = 1.5 * Math.PI;
+        const currentSpinAngleNorm = (STATE.currentAngle % (2 * Math.PI) + 2 * Math.PI) % (2 * Math.PI);
+        const relativeAngle = (pointerAngle - currentSpinAngleNorm + 2 * Math.PI) % (2 * Math.PI);
+        const activeSegment = Math.floor(relativeAngle / anglePerSegment);
+
+        if (activeSegment !== lastTickSegmentIndex) {
+            playTickSound();
+            lastTickSegmentIndex = activeSegment;
+        }
+
+        drawWheel();
+
+        if (progress < 1) {
+            animationFrameId = requestAnimationFrame(animate);
+        } else {
+            completeSpin(activeSegment);
+        }
+    }
+
+    animationFrameId = requestAnimationFrame(animate);
+}
+
+function completeSpin(winningIndex) {
+    STATE.isSpinning = false;
+    spinButton.disabled = false;
+    pointer.classList.remove('active-bounce');
+    document.getElementById('status-hint').innerHTML = `Last Winner: <strong>${STATE.items[winningIndex].text}</strong>! Click center to spin.`;
+
+    const winner = STATE.items[winningIndex];
+
+    // Trigger Fanfare sound
+    playWinSound();
+
+    // Trigger full screen confetti
+    if (STATE.confettiEnabled) {
+        startConfetti();
+    }
+
+    // Add to history list
+    addWinnerToHistory(winner.text);
+
+    // Populate and open winner modal
+    winnerText.innerText = winner.text;
+    // Save the index to be removed if they choose to delete
+    modalRemoveBtn.dataset.indexToRemove = winningIndex;
+    winnerModal.classList.add('active');
+}
+
+// --- 7. Full-Screen Custom Confetti Particle System ---
+let confettiCanvas = null;
+let confettiCtx = null;
+let confettiParticles = [];
+let confettiAnimationId = null;
+
+function startConfetti() {
+    if (!confettiCanvas) {
+        confettiCanvas = document.createElement('canvas');
+        confettiCanvas.id = 'confetti-canvas';
+        confettiCanvas.style.position = 'fixed';
+        confettiCanvas.style.top = '0';
+        confettiCanvas.style.left = '0';
+        confettiCanvas.style.width = '100vw';
+        confettiCanvas.style.height = '100vh';
+        confettiCanvas.style.pointerEvents = 'none';
+        confettiCanvas.style.zIndex = '999';
+        document.body.appendChild(confettiCanvas);
+        confettiCtx = confettiCanvas.getContext('2d');
+    }
+
+    resizeConfettiCanvas();
+    window.addEventListener('resize', resizeConfettiCanvas);
+
+    // Generate confetti particles
+    confettiParticles = [];
+    const colors = ['#f43f5e', '#10b981', '#3b82f6', '#f59e0b', '#8b5cf6', '#06b6d4'];
+    const count = 120;
+
+    for (let i = 0; i < count; i++) {
+        confettiParticles.push({
+            x: Math.random() * confettiCanvas.width,
+            y: Math.random() * confettiCanvas.height - confettiCanvas.height, // start above screen
+            r: Math.random() * 6 + 4,
+            d: Math.random() * confettiCanvas.height,
+            color: colors[Math.floor(Math.random() * colors.length)],
+            tilt: Math.random() * 10 - 5,
+            tiltAngleIncremental: Math.random() * 0.07 + 0.02,
+            tiltAngle: 0,
+            speed: Math.random() * 3 + 4
+        });
+    }
+
+    const duration = 4000; // 4 seconds duration
+    const startTime = Date.now();
+
+    function updateConfetti() {
+        const elapsed = Date.now() - startTime;
+        confettiCtx.clearRect(0, 0, confettiCanvas.width, confettiCanvas.height);
+
+        confettiParticles.forEach((p, idx) => {
+            p.tiltAngle += p.tiltAngleIncremental;
+            p.y += (Math.cos(p.d) + 3 + p.r / 2) / 2 * (p.speed * 0.3);
+            p.x += Math.sin(p.tiltAngle) * 0.8;
+            p.tilt = Math.sin(p.tiltAngle - idx / 3) * 15;
+
+            // Draw particle
+            confettiCtx.beginPath();
+            confettiCtx.lineWidth = p.r;
+            confettiCtx.strokeStyle = p.color;
+            confettiCtx.moveTo(p.x + p.tilt + p.r / 2, p.y);
+            confettiCtx.lineTo(p.x + p.tilt, p.y + p.tilt + p.r / 2);
+            confettiCtx.stroke();
+
+            // Reset when fall past bottom
+            if (p.y > confettiCanvas.height) {
+                p.x = Math.random() * confettiCanvas.width;
+                p.y = -20;
+            }
+        });
+
+        if (elapsed < duration) {
+            confettiAnimationId = requestAnimationFrame(updateConfetti);
+        } else {
+            clearConfetti();
+        }
+    }
+
+    if (confettiAnimationId) {
+        cancelAnimationFrame(confettiAnimationId);
+    }
+    updateConfetti();
+}
+
+function clearConfetti() {
+    if (confettiAnimationId) {
+        cancelAnimationFrame(confettiAnimationId);
+        confettiAnimationId = null;
+    }
+    if (confettiCanvas && confettiCanvas.parentNode) {
+        confettiCanvas.parentNode.removeChild(confettiCanvas);
+        confettiCanvas = null;
+        confettiCtx = null;
+        window.removeEventListener('resize', resizeConfettiCanvas);
+    }
+}
+
+function resizeConfettiCanvas() {
+    if (confettiCanvas) {
+        confettiCanvas.width = window.innerWidth;
+        confettiCanvas.height = window.innerHeight;
+    }
+}
+
+// --- 8. Choice List State Management ---
+function renderList() {
+    itemsList.innerHTML = '';
+    
+    if (STATE.items.length === 0) {
+        itemsList.innerHTML = `<li class="history-empty">Your list is empty! Type an option above to add it.</li>`;
+        return;
+    }
+
+    STATE.items.forEach((item, index) => {
+        const li = document.createElement('li');
+        li.className = 'item-row';
+        li.innerHTML = `
+            <div class="item-color-indicator" style="background-color: ${item.color}"></div>
+            <input type="text" class="item-text" value="${escapeHtml(item.text)}" style="background:transparent; border:none; color:white; outline:none; font-weight:500;" data-index="${index}">
+            <div class="item-actions">
+                <button class="btn-icon delete-item" data-index="${index}" aria-label="Delete choice">
+                    <i data-lucide="trash-2"></i>
+                </button>
+            </div>
+        `;
+        itemsList.appendChild(li);
+    });
+
+    // Re-bind click event handlers for items list
+    lucide.createIcons();
+    bindListEvents();
+}
+
+function escapeHtml(str) {
+    return str.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#039;");
+}
+
+function bindListEvents() {
+    // Delete buttons
+    document.querySelectorAll('.delete-item').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            const index = parseInt(e.currentTarget.dataset.index);
+            deleteItem(index);
+        });
+    });
+
+    // Inline inputs editing
+    document.querySelectorAll('.item-text').forEach(input => {
+        input.addEventListener('change', (e) => {
+            const index = parseInt(e.target.dataset.index);
+            const value = e.target.value.trim();
+            if (value === '') {
+                deleteItem(index);
+            } else {
+                STATE.items[index].text = value;
+                drawWheel();
+            }
+        });
+
+        // Submit on enter key
+        input.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                e.target.blur();
+            }
+        });
+    });
+}
+
+function addItem(text) {
+    text = text.trim();
+    if (text === '') return;
+    
+    const palette = STATE.themes[STATE.currentTheme];
+    const color = palette[STATE.items.length % palette.length];
+    
+    STATE.items.push({ text, color });
+    renderList();
+    drawWheel();
+}
+
+function deleteItem(index) {
+    STATE.items.splice(index, 1);
+    assignColors();
+    renderList();
+    drawWheel();
+}
+
+function shuffleList() {
+    if (STATE.items.length <= 1) return;
+    
+    // Fisher-Yates Shuffle
+    for (let i = STATE.items.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [STATE.items[i], STATE.items[j]] = [STATE.items[j], STATE.items[i]];
+    }
+
+    // Reassign colors for visually satisfying layout
+    assignColors();
+    renderList();
+    drawWheel();
+
+    // Trigger canvas spin-vibration look on shuffle click
+    canvas.style.transform = 'scale(1.02)';
+    setTimeout(() => { canvas.style.transform = 'none'; }, 150);
+}
+
+// --- 9. Winners History Log Operations ---
+function addWinnerToHistory(name) {
+    const time = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+    STATE.history.unshift({ name, time });
+    renderHistory();
+}
+
+function renderHistory() {
+    winnersList.innerHTML = '';
+    
+    if (STATE.history.length === 0) {
+        winnersList.innerHTML = `<li class="history-empty">No spins recorded yet! Spin the wheel to begin.</li>`;
+        return;
+    }
+
+    STATE.history.forEach((record) => {
+        const li = document.createElement('li');
+        li.className = 'winner-row';
+        li.innerHTML = `
+            <span>🏆 <strong>${escapeHtml(record.name)}</strong></span>
+            <span class="winner-time">${record.time}</span>
+        `;
+        winnersList.appendChild(li);
+    });
+}
+
+// --- 10. Modal Control Events ---
+function closeModal() {
+    winnerModal.classList.remove('active');
+    clearConfetti();
+
+    // Handle auto elimination if toggle is on
+    if (STATE.autoEliminate && modalRemoveBtn.dataset.indexToRemove !== undefined) {
+        const index = parseInt(modalRemoveBtn.dataset.indexToRemove);
+        deleteItem(index);
+        modalRemoveBtn.removeAttribute('data-index-to-remove');
+    }
+}
+
+// --- 11. Event Listeners Setup ---
+function setupEventListeners() {
+    // Spin Event
+    spinButton.addEventListener('click', spin);
+    window.addEventListener('keydown', (e) => {
+        // Spacebar triggers spin (only when focus is not inside form elements)
+        if (e.code === 'Space' && document.activeElement.tagName !== 'INPUT' && document.activeElement.tagName !== 'TEXTAREA') {
+            e.preventDefault();
+            spin();
+        }
+    });
+
+    // Add Item Event
+    addForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const text = newItemInput.value;
+        if (text.trim() !== '') {
+            addItem(text);
+            newItemInput.value = '';
+        }
+    });
+
+    // Theme selector
+    themeSelect.addEventListener('change', (e) => {
+        STATE.currentTheme = e.target.value;
+        assignColors();
+        updateThemeVariables();
+        renderList();
+    });
+
+    // Duration slider
+    durationSlider.addEventListener('input', (e) => {
+        STATE.spinDuration = parseInt(e.target.value);
+        durationVal.innerText = STATE.spinDuration + 's';
+    });
+
+    // Volume slider & icon toggle
+    volumeSlider.addEventListener('input', (e) => {
+        STATE.volume = parseFloat(e.target.value) / 100;
+        volumeVal.innerText = e.target.value + '%';
+        if (STATE.volume > 0) {
+            STATE.isMuted = false;
+            volumeIcon.dataset.lucide = STATE.volume > 0.5 ? 'volume-2' : 'volume-1';
+        } else {
+            STATE.isMuted = true;
+            volumeIcon.dataset.lucide = 'volume-x';
+        }
+        lucide.createIcons();
+        initAudio();
+    });
+
+    volumeIconBtn.addEventListener('click', () => {
+        STATE.isMuted = !STATE.isMuted;
+        if (STATE.isMuted) {
+            volumeIcon.dataset.lucide = 'volume-x';
+            volumeSlider.value = 0;
+            volumeVal.innerText = '0%';
+        } else {
+            STATE.isMuted = false;
+            STATE.volume = 0.7;
+            volumeIcon.dataset.lucide = 'volume-2';
+            volumeSlider.value = 70;
+            volumeVal.innerText = '70%';
+        }
+        lucide.createIcons();
+        initAudio();
+    });
+
+    // Settings checkboxes
+    eliminateToggle.addEventListener('change', (e) => {
+        STATE.autoEliminate = e.target.checked;
+    });
+
+    confettiToggle.addEventListener('change', (e) => {
+        STATE.confettiEnabled = e.target.checked;
+    });
+
+    // List buttons
+    shuffleBtn.addEventListener('click', shuffleList);
+    clearBtn.addEventListener('click', () => {
+        if (confirm("Are you sure you want to clear all choices?")) {
+            STATE.items = [];
+            renderList();
+            drawWheel();
+        }
+    });
+
+    // History log
+    clearHistoryBtn.addEventListener('click', () => {
+        STATE.history = [];
+        renderHistory();
+    });
+
+    // Modal Close
+    modalCloseBtn.addEventListener('click', closeModal);
+    winnerModal.addEventListener('click', (e) => {
+        if (e.target === winnerModal) closeModal();
+    });
+
+    modalRemoveBtn.addEventListener('click', () => {
+        const index = parseInt(modalRemoveBtn.dataset.indexToRemove);
+        if (!isNaN(index)) {
+            deleteItem(index);
+            modalRemoveBtn.removeAttribute('data-index-to-remove');
+        }
+        winnerModal.classList.remove('active');
+        clearConfetti();
+    });
+
+    // Bulk Modal Actions
+    bulkBtn.addEventListener('click', () => {
+        // Load current items into textarea
+        bulkTextarea.value = STATE.items.map(item => item.text).join('\n');
+        bulkModal.classList.add('active');
+    });
+
+    bulkCancelBtn.addEventListener('click', () => {
+        bulkModal.classList.remove('active');
+    });
+
+    bulkImportBtn.addEventListener('click', () => {
+        const lines = bulkTextarea.value.split('\n');
+        const newItems = [];
+        lines.forEach(line => {
+            const trimmed = line.trim();
+            if (trimmed !== '') {
+                newItems.push({ text: trimmed, color: '' });
+            }
+        });
+
+        STATE.items = newItems;
+        assignColors();
+        renderList();
+        drawWheel();
+        bulkModal.classList.remove('active');
+    });
+
+    bulkModal.addEventListener('click', (e) => {
+        if (e.target === bulkModal) {
+            bulkModal.classList.remove('active');
+        }
+    });
+
+    // Tab Navigation
+    document.querySelectorAll('.tab-btn').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            // Deactivate all
+            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+            document.querySelectorAll('.tab-pane').forEach(p => p.classList.remove('active'));
+
+            // Activate current
+            const targetId = btn.dataset.tab;
+            btn.classList.add('active');
+            document.getElementById(targetId).classList.add('active');
+        });
+    });
+}
+
+// --- 12. App Initialization ---
+function init() {
+    assignColors();
+    updateThemeVariables();
+    renderList();
+    renderHistory();
+    setupEventListeners();
+    drawWheel();
+}
+
+window.addEventListener('load', init);
+
+
+// --- 13. Page Modals Navigation (About Us, Privacy Policy, Terms of Use) ---
+function openPageModal(pageId) {
+    document.querySelectorAll('.page-modal-overlay').forEach(function(m) {
+        m.classList.remove('active');
+    });
+    
+    var target = document.getElementById(pageId + '-modal');
+    if (target) {
+        target.classList.add('active');
+        document.body.style.overflow = 'hidden';
+        target.scrollTop = 0;
+        if (window.lucide && typeof lucide.createIcons === 'function') {
+            lucide.createIcons();
+        }
+    }
+}
+
+function closePageModal() {
+    document.querySelectorAll('.page-modal-overlay').forEach(function(m) {
+        m.classList.remove('active');
+    });
+    document.body.style.overflow = '';
+    if (['#about', '#privacy', '#privacy-policy', '#terms', '#terms-of-use'].indexOf(window.location.hash.toLowerCase()) !== -1) {
+        if (history.pushState) {
+            history.pushState('', document.title, window.location.pathname + window.location.search);
+        } else {
+            window.location.hash = '';
+        }
+    }
+}
+
+window.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' || e.keyCode === 27) {
+        closePageModal();
+    }
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('.page-modal-overlay').forEach(function(modal) {
+        modal.addEventListener('click', function(e) {
+            if (e.target === modal) {
+                closePageModal();
+            }
+        });
+    });
+});
+
+function handleHashRoute() {
+    var hash = (window.location.hash || '').toLowerCase();
+    if (hash === '#about') {
+        openPageModal('about');
+    } else if (hash === '#privacy' || hash === '#privacy-policy') {
+        openPageModal('privacy');
+    } else if (hash === '#terms' || hash === '#terms-of-use') {
+        openPageModal('terms');
+    }
+}
+
+window.addEventListener('hashchange', handleHashRoute);
+if (document.readyState === 'complete' || document.readyState === 'interactive') {
+    handleHashRoute();
+} else {
+    window.addEventListener('DOMContentLoaded', handleHashRoute);
+}
+
+
+// Render Lucide SVG Icons
+if (window.lucide && typeof lucide.createIcons === 'function') {
+    lucide.createIcons();
+}
+</script>
+</body>
+</html>
